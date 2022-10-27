@@ -1,0 +1,22 @@
+.itemFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.card {
+  margin: 20px;
+}
+.descriptionContainer {
+  width: 200px;
+  padding: 10px;
+  background-color: #30292f;
+  color: #355691;
+  border-radius: 15px;
+  height: 600px;
+  max-height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-around;
+  align-items: stretch;
+}

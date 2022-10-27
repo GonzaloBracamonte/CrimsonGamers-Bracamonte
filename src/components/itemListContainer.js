@@ -1,9 +1,14 @@
-const ItemList = (greeting) => {
+import React from "react";
+import ItemList from "./itemList";
+import "./styles/item.css";
+
+const ItemListContainer = (greeting) => {
   return (
-    <div>
-      <h1>Item List</h1>
+    <div className="itemFlex">
+      <h1>{greeting.msg}</h1>
+      <ItemList />
     </div>
   );
 };
 
-export default ItemList;
+export default ItemListContainer;

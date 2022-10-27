@@ -1,29 +1,46 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
-import iconCart from "../assets/icons/cart Icon.png";
+import { Outlet, Link } from "react-router-dom";
+import CartWidget from "../components/cartWidget";
 
 const NavBar = () => {
   return (
     <>
       <Navbar className="navBg" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Crimson Gamers</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            Crimson Gamers
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#services">Services</Nav.Link>
-              <Nav.Link href="#itemlist">Items List</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
-              <Nav.Link href="#about">About Us</Nav.Link>
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/category/services">
+                Services
+              </Nav.Link>
+              <Nav.Link as={Link} to="/category/itemlist">
+                Items List
+              </Nav.Link>
+              <Nav.Link as={Link} to="/category/contact">
+                Contact
+              </Nav.Link>
+              <Nav.Link as={Link} to="/category/about">
+                About Us
+              </Nav.Link>
               <Navbar.Collapse>
-                <Nav.Link href="#cart">
-                  <img src={iconCart} alt="CartWidget Icon"></img>
+                <Nav.Link href="/category/cartwidget">
+                  <CartWidget />
                 </Nav.Link>
               </Navbar.Collapse>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <section>
+        <Outlet></Outlet>
+      </section>
     </>
   );
 };

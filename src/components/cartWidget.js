@@ -1,7 +1,10 @@
+import iconCart from "../assets/icons/cart Icon.png";
+import "./styles/cartWidget.css";
+
 const CartWidget = () => {
   return (
     <div>
-      <h1>View Cart</h1>
+      <img src={iconCart} alt="CartWidget Icon"></img>
     </div>
   );
 };
