@@ -1,8 +1,11 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./layout/NavBar";
 import ItemListContainer from "./components/itemListContainer";
 import ItemDetailContainer from "./components/itemDetailContainer";
+import About from "./components/about";
+import Contact from "./components/contact";
+import Services from "./components/services";
 
 function App() {
   return (
@@ -11,9 +14,11 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
-          <Route path="category/:categoryId" element={<ItemListContainer />} />
-          <Route path="item/:title" element={<ItemDetailContainer />} />
-          <Route path="/*" element={<div>404 not found</div>} />
+          <Route path="item/:ID" element={<ItemDetailContainer />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="services" element={<Services />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
     </>

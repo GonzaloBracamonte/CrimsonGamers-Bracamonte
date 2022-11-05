@@ -16,20 +16,23 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/category/services">
+              <Nav.Link as={Link} to="/services">
                 Services
               </Nav.Link>
-              <Nav.Link as={Link} to="/category/itemlist">
+              <Nav.Link as={Link} to="/itemlist">
                 Items List
               </Nav.Link>
-              <Nav.Link as={Link} to="/category/contact">
+              <Nav.Link as={Link} to="/category">
+                Category
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contact">
                 Contact
               </Nav.Link>
-              <Nav.Link as={Link} to="/category/about">
+              <Nav.Link as={Link} to="/about">
                 About Us
               </Nav.Link>
               <Navbar.Collapse>
-                <Nav.Link href="/category/cartwidget">
+                <Nav.Link href="/cartwidget">
                   <CartWidget />
                 </Nav.Link>
               </Navbar.Collapse>

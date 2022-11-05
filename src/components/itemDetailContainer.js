@@ -1,48 +1,14 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect, Fragment } from "react";
-import Items from "./styles/item";
+import React from "react";
+import ItemDetail from "./itemDetail";
+import "./styles/item.css";
 
-function ItemDetailContainer() {
-  const [cards, setCards] = useState();
-  const [loading, isLoading] = useState[true];
-  const { itemTitle } = useParams();
-
-  const listing = () => {
-    let products = require("../backend/productsMockup.json");
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(products);
-        isLoading(true);
-      }, 3000);
-    });
-  };
-
-  useEffect(() => {
-    async function fetchedItems() {
-      const items = await listing();
-      setCards(items);
-    }
-    fetchedItems();
-  }, []);
-
+const ItemDetailContainer = (greeting) => {
   return (
-    <Fragment>
-      {!loading
-        ? cards
-        : cards.map((element) => (
-            <Items
-              title={element.title}
-              description={element.description}
-              image={element.image}
-              category={element.category}
-              size={element.size}
-              color={element.color}
-              price={element.price}
-              stock={element.inStock}
-            />
-          ))}
-    </Fragment>
+    <div className="itemFlex">
+      <h1>{greeting.msg}</h1>
+      <ItemDetail />
+    </div>
   );
-}
+};
 
 export default ItemDetailContainer;

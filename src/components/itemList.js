@@ -29,14 +29,12 @@ function ItemList() {
         ? cards
         : cards.map((element) => (
             <Items
+              id={element.id}
               title={element.title}
-              description={element.description}
               image={element.image}
               category={element.category}
-              size={element.size}
-              color={element.color}
               price={element.price}
-              stock={element.inStock}
+              stock={element.stock}
             />
           ))}
     </Fragment>
