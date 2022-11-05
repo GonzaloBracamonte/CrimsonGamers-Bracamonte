@@ -5,7 +5,7 @@ import Items from "./item";
 function ItemDetail() {
   const [cards, setCards] = useState("");
   const [loading, isLoading] = useState(false);
-  const titleID = useParams();
+  const productID = useParams();
 
   const getSingleItem = () => {
     let products = require("../backend/productsMockup.json");
@@ -13,7 +13,7 @@ function ItemDetail() {
       setTimeout(() => {
         resolve(products);
         isLoading(true);
-      }, 1000);
+      }, 3000);
     });
   };
 
@@ -30,10 +30,10 @@ function ItemDetail() {
       {!loading
         ? cards
         : cards
-            .filter((product) => product.ID.includes(titleID))
+            .filter((product) => product.ID.includes(productID))
             .map((element) => (
               <Items
-                id={element.id}
+                id={element.ID}
                 title={element.title}
                 description={element.description}
                 image={element.image}

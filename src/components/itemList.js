@@ -29,7 +29,7 @@ function ItemList() {
         ? cards
         : cards.map((element) => (
             <Items
-              id={element.id}
+              id={element.ID}
               title={element.title}
               image={element.image}
               category={element.category}

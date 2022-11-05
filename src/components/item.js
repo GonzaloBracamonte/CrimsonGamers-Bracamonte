@@ -7,9 +7,10 @@ import ItemCount from "./itemCount";
 const Items = (props) => {
   return (
     <div key={props.title} className="card">
-      <Link to={`item/${props.id}`} />
       <div className="descriptionContainer">
-        <h3>{props.title}</h3>
+        <Link to={`item/${props.id}`}>
+          <h3>{props.title}</h3>
+        </Link>
         <img alt={`product ${props.category}`} src={props.image} />
         <h4>{`Price: $${props.price}`}</h4>
         <p>{props.description}</p>
@@ -17,9 +18,9 @@ const Items = (props) => {
         <div className="buttonContainer">
           <Button />
         </div>
-        <ItemCount stock={props.stock} initial={0} />
         <div>
-          <Link to={`item/${props.ID}`}>View</Link>
+          <ItemCount stock={props.stock} initial={0} />
+          <Link to={`item/${props.id}`}>View</Link>
         </div>
       </div>
     </div>
