@@ -1,11 +1,17 @@
-import iconCart from "../assets/icons/cart Icon.png";
-import "./styles/cartWidget.css";
+import React from "react";
+import { useContext } from "react";
+import { CartContext } from "./cartContext";
 
 const CartWidget = () => {
+  const { getItemQuantity } = useContext(CartContext);
+
   return (
-    <div>
-      <img src={iconCart} alt="CartWidget Icon"></img>
-    </div>
+    <>
+      <div>
+        {getItemQuantity()}
+        <ion-icon name="cart-outline"></ion-icon>
+      </div>
+    </>
   );
 };
 

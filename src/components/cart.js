@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { CartContext } from "./CartContext";
+import { CartContext } from "./cartContext";
 import { Button, Table } from "react-bootstrap";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { Link } from "react-router-dom";
