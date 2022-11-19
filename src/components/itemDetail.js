@@ -1,49 +1,37 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import Items from "./item";
+import ItemCount from "./itemCount";
+import { CartContext } from "./cartContext";
 
-function ItemDetail() {
-  const [cards, setCards] = useState("");
-  const [loading, isLoading] = useState(false);
-  const productID = useParams();
-
-  const getSingleItem = () => {
-    let products = require("../backend/productsMockup.json");
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(products);
-        isLoading(true);
-      }, 3000);
-    });
-  };
-
-  useEffect(() => {
-    async function fetchedItems() {
-      const item = await getSingleItem();
-      setCards(item);
-    }
-    fetchedItems();
-  }, []);
+function ItemDetail({ product }) {
+  const [cards, setCards] = useState(0);
+  const { title, description, image, category, color, price, stock } = product;
+  const { addItem } = useContext(CartContext);
+  function onAdd(quantity) {
+    addItem(product, quantity);
+    setCards(quantity);
+  }
 
   return (
-    <Fragment>
-      {!loading
-        ? cards
-        : cards
-            .filter((product) => product.ID.includes(productID))
-            .map((element) => (
-              <Items
-                id={element.ID}
-                title={element.title}
-                description={element.description}
-                image={element.image}
-                category={element.category}
-                color={element.color}
-                price={element.price}
-                stock={element.inStock}
-              />
-            ))}
-    </Fragment>
+    <>
+      <Items>
+        <Items.Image src={image} />
+        <Items.Body>
+          <Items.Title>{title}</Items.Title>
+          <Items.Description>{description}</Items.Description>
+          <Items.Category>{category}</Items.Category>
+          <Items.Price>$ {price}</Items.Price>
+          <Items.Color>{color}</Items.Color>
+          <p></p>
+          {cards > 0 ? (
+            <Link to={"/cart"}>Finish Buying</Link>
+          ) : (
+            <ItemCount initial={1} stock={stock} onAdd={onAdd} />
+          )}
+        </Items.Body>
+      </Items>
+    </>
   );
 }
 
